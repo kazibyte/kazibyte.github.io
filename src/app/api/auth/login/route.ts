@@ -1,22 +1,64 @@
+import connectDB from "@/lib/connectDB";
+import User from "@/models/User";
 import { NextRequest, NextResponse } from "next/server";
+import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { loginSchema } from "@/schemas/auth";
 
-export async function POST(request: NextRequest, response: NextResponse) {
+connectDB();
+
+export async function POST(request: NextRequest) {
   try {
-    const reqBody = await loginSchema.safeParseAsync(await request.json());
+    const reqBody = await request.json();
 
-    console.log(reqBody);
+    // validate the req body
+    const parsedBody = loginSchema.safeParse(reqBody);
 
-    if (!reqBody.success) {
-      return NextResponse.json({ error: reqBody.error }, { status: 400 });
+    if (!parsedBody.success) {
+      return NextResponse.json(
+        { error: parsedBody.error.message },
+        { status: 400 }
+      );
     }
 
-    return NextResponse.json(reqBody.data);
-  } catch (error) {
-    return NextResponse.json({ error: error }, { status: 500 });
-  }
-}
+    const { email, password } = parsedBody.data;
 
-export async function GET(request: NextRequest, response: NextResponse) {
-  return NextResponse.json({ message: "hello" });
+    //check if user exists
+    const user = await User.findOne({ email });
+    if (!user) {
+      return NextResponse.json(
+        { error: "User does not exist" },
+        { status: 400 }
+      );
+    }
+    console.log("user exists");
+
+    //check if password is correct
+    const validPassword = await bcryptjs.compare(password, user.password);
+    if (!validPassword) {
+      return NextResponse.json({ error: "Invalid password" }, { status: 400 });
+    }
+    console.log(user);
+
+    //create token data
+    const tokenData = {
+      id: user._id,
+      email: user.email,
+    };
+    //create token
+    const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
+      expiresIn: "1d",
+    });
+
+    const response = NextResponse.json({
+      message: "Login successful",
+      success: true,
+    });
+    response.cookies.set("token", token, {
+      httpOnly: true,
+    });
+    return response;
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
 }

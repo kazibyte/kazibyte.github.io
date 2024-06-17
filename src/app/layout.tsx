@@ -4,7 +4,8 @@ import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import Header from "@/components/headers/Header";
 import {keywordData} from '@/config/keywords/Keywords.json'
-
+import {ThemeProvider} from '@/components/themes/ThemeProvider'
+import Navbar from "@/components/headers/Navbar";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -30,8 +31,19 @@ export default function RootLayout({
     </head>
   
       <body className={inter.className}>
+       <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem={false}
+        themes={["light", "dark"]}
+        storageKey="kaziByte-theme"
+       >
+
+     
         <div className="">
           <Header />
+
+          <Navbar />
        
           {children}
 
@@ -39,6 +51,7 @@ export default function RootLayout({
    
           <Footer />
         </div>
+        </ThemeProvider>
       </body>
 
     </html>
