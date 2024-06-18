@@ -40,11 +40,11 @@ const Hero: React.FC = () => {
       <div className="mt-[-50px] flex h-screen items-center justify-center">
         <div className="max-w-full flex-shrink-0 px-4 text-center lg:mx-0 lg:max-w-3xl lg:pt-8">
           <h1 className="mt-10 text-5xl font-bold tracking-tight text-orange-500 sm:text-6xl">
-            revolutionize
-            <span className="text-sky-500">your workflow</span> with
-            <span className="text-sky-500">Zynx</span>
+          Empowering Yoyr  
+            <span className="text-sky-500 m-4">Digital Growth </span>
           </h1>
-          <p className="mt-6 text-lg leading-8 text-slate-700">Elevate Your Productivity With Zynx, Your Personalized Workflow Assistant</p>
+          <p className="mt-6 text-lg leading-8 text-slate-700">🌟 Complete Web Design and Development Services That Grow Your Business! 🌟
+          </p>
           <div className="mt-5 flex items-center justify-center gap-x-6">
             <a href="/register" className="rounded-md bg-sky-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400" rel="noreferrer">Try Now →</a>
           </div>
