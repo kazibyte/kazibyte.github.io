@@ -1,13 +1,38 @@
+import keywords from "../meta/keywords.json";
+import { z } from "zod";
+
+const SEOMetaTagsSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  keywords: z.string(),
+  author: z.string(),
+  robots: z.string(),
+  viewport: z.string(),
+  ogTitle: z.string(),
+  ogDescription: z.string(),
+  ogType: z.string(),
+  ogUrl: z.string(),
+  ogImage: z.string(),
+  twitterCard: z.string(),
+  twitterCreator: z.string(),
+  canonical: z.string(),
+  language: z.string(),
+  geoRegion: z.string(),
+  geoPlacename: z.string(),
+});
+
+
+
 const Metatags = {
     title: "KaziByte - Empowering Digital Solutions for a Connected World",
     description:
       "KaziByte is a student-run, non-profit, student-led, and student-run organization.",
   };
   
-  const SEOMETATAGS = {
+  const SEOMetaTags: z.infer<typeof SEOMetaTagsSchema> = {
     title: Metatags.title,
     description: Metatags.description,
-    keywords: "digital solutions, student-run organization, non-profit",
+    keywords: keywords.keywordData.join(", "),
     author: "zobaiudlkazi",
     robots: "index,follow",
     viewport: "width=device-width, initial-scale=1.0",
@@ -25,4 +50,4 @@ const Metatags = {
   };
   
 
-  export default SEOMETATAGS;
+  export default SEOMetaTags;
