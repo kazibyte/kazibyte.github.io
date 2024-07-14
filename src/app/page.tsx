@@ -1,11 +1,10 @@
-import ThemeSwitch from '@/components/common/ThemeSwitch'
 import React from 'react'
+import Navbar from '@/components/ui/nav/Navbar'
 
 const Home = () => {
   return (
     <div>
-      
-      <ThemeSwitch />
+      <Navbar />
     </div>
   )
 }
