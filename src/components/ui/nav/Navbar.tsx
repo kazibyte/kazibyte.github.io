@@ -4,14 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import ThemeSwitch from "@/components/common/ThemeSwitch";
 import {
-  PuzzlePieceIcon,
-  ShoppingCartIcon,
-  NewspaperIcon,
-  UsersIcon,
-  CurrencyDollarIcon,
-  TruckIcon,
-  AcademicCapIcon,
-  MusicalNoteIcon,
   WrenchScrewdriverIcon,
   GlobeAltIcon,
   CpuChipIcon,
@@ -34,48 +26,6 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  {
-    label: "Our Solutions",
-    href: "/our-solutions",
-    icon: PuzzlePieceIcon,
-    dropdownItems: [
-      {
-        label: "E-commerce Store",
-        href: "/solutions/e-commerce",
-        icon: ShoppingCartIcon,
-      },
-      {
-        label: "News Media",
-        href: "/solutions/news-media",
-        icon: NewspaperIcon,
-      },
-      {
-        label: "Social Media",
-        href: "/solutions/social-media",
-        icon: UsersIcon,
-      },
-      {
-        label: "Personal Finance",
-        href: "/solutions/personal-finance",
-        icon: CurrencyDollarIcon,
-      },
-      {
-        label: "Food Delivery",
-        href: "/solutions/food-delivery",
-        icon: TruckIcon,
-      },
-      {
-        label: "School Management",
-        href: "/solutions/school-management",
-        icon: AcademicCapIcon,
-      },
-      {
-        label: "Music Streaming",
-        href: "/solutions/music-streaming",
-        icon: MusicalNoteIcon,
-      },
-    ],
-  },
   {
     label: "Services",
     href: "/services",
