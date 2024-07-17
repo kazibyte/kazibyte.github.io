@@ -30,7 +30,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <BgGradient />
-          <div className=" text-black dark:text-white"> {children}</div>
+          <div className="text-black dark:text-white"> {children}</div>
         </ThemeProvider>
       </body>
     </html>
