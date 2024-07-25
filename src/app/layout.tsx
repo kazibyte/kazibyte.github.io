@@ -4,6 +4,7 @@ import "./globals.css";
 import  {ThemeProvider} from "@/components/common/ThemeProvider";
 import BgGradient from "@/components/common/BgGradient";
 import SEOMetaTags from "../contexts/meta/SEOTags";
+import Navbar from "@/components/ui/nav/Navbar";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+      <Navbar />
 
       <ThemeProvider
           attribute="class"
