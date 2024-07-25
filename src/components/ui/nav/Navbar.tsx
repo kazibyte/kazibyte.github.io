@@ -195,7 +195,7 @@ const Navbar: React.FC = () => {
                         <Link
                           key={dropdownIndex}
                           href={dropdownItem.href}
-                          className="block px-4 py-2 text-sm hover:bg-green-400 dark:hover:bg-green-600 flex items-center"
+                          className=" px-4 py-2 text-sm hover:bg-green-400 dark:hover:bg-green-600 flex items-center"
                         >
                           <dropdownItem.icon className="h-5 w-5 mr-2" />
                           {dropdownItem.label}
@@ -207,11 +207,14 @@ const Navbar: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="text-xl ml-40 font-bold justify-end">
+          <div className="max-sm:hidden max-md:hidden max-xl:hidden">
             <ThemeSwitch />
           </div>
           {/* Mobile Menu Button */}
-          <div className="lg:hidden">
+          <div className="lg:hidden flex space-x-4">
+            <div className="">
+              <ThemeSwitch />
+            </div>
             <button onClick={toggleMobileMenu} className="focus:outline-none">
               <svg
                 className="h-6 w-6"

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import  {ThemeProvider} from "@/components/common/ThemeProvider";
 import BgGradient from "@/components/common/BgGradient";
 import SEOMetaTags from "../contexts/meta/SEOTags";
 import Navbar from "@/components/ui/nav/Navbar";
@@ -24,16 +23,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
       <Navbar />
-
-      <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
           <BgGradient />
           <div className="text-black dark:text-white"> {children}</div>
-        </ThemeProvider>
       </body>
     </html>
   );

@@ -33,9 +33,9 @@ const ThemeSwitch = () => {
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative sm:ml-14">
       <button
-        className="inline-flex  rounded-full justify-center p-2  shadow-lg shadow-neutral-400"
+        className=" rounded-full justify-center p-2  shadow-lg shadow-neutral-400"
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
         <span>{getIcon(theme || "system")}</span>
@@ -45,10 +45,11 @@ const ThemeSwitch = () => {
         <ul className="absolute right-0 z-10 mt-2 p-2   rounded-full shadow-lg shadow-neutral-400 ">
           <li
             className={`cursor-pointer flex items-center justify-center w-full h-12`}
-            onClick={() => handleThemeChange("system")}
+            onClick={() => handleThemeChange("light")}
           >
-            <ComputerDesktopIcon className="w-6 h-6" />
+            <SunIcon className="w-6 h-6" />
           </li>
+
           <li
             className={`cursor-pointer flex items-center justify-center w-full h-12`}
             onClick={() => handleThemeChange("dark")}
@@ -57,9 +58,9 @@ const ThemeSwitch = () => {
           </li>
           <li
             className={`cursor-pointer flex items-center justify-center w-full h-12`}
-            onClick={() => handleThemeChange("light")}
+            onClick={() => handleThemeChange("system")}
           >
-            <SunIcon className="w-6 h-6" />
+            <ComputerDesktopIcon className="w-6 h-6" />
           </li>
         </ul>
       )}
