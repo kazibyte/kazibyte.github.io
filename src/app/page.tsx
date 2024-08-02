@@ -1,12 +1,14 @@
 import React from 'react'
 import HeroSection from "@/components/ui/hero/HeroSection"
-import EnhancedHeroSection from '@/components/ui/hero/EnhancedHeroSection';
+import HeroSectionWithVideo from '@/components/ui/hero/HeroSectionWithVideo'
+
+
 const Home = () => {
   return (
     <div>
       
       <HeroSection />
-      <EnhancedHeroSection />
+      <HeroSectionWithVideo />
     </div>
   )
 }
