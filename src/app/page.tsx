@@ -1,6 +1,7 @@
 import React from 'react'
 import HeroSection from "@/components/ui/hero/HeroSection"
 import HeroSectionWithVideo from '@/components/ui/hero/HeroSectionWithVideo'
+import ScrollToTop from '@/components/common/ScrollToTop'
 
 
 const Home = () => {
@@ -9,6 +10,7 @@ const Home = () => {
       
       <HeroSection />
       <HeroSectionWithVideo />
+      <ScrollToTop />
     </div>
   )
 }

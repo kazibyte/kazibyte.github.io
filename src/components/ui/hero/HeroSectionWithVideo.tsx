@@ -100,7 +100,7 @@ const HeroSectionWithVideo = () => {
                     <div className="relative">
                         <motion.img 
                             src="https://github.com/kazibyte/kazibyte.github.io/blob/main/public/android-chrome-384x384.png?raw=true" 
-                            className="w-full rounded-lg shadow-lg"
+                            className="w-1/5 lg:w-full rounded-lg shadow-lg"
                             initial={{ scale: 0.9 }}
                             animate={{ scale: 1 }}
                             transition={{ duration: 0.5, delay: 0.3 }}
