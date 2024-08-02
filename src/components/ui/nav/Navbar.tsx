@@ -164,7 +164,7 @@ const Navbar: React.FC = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "shadow-md bg-gray-300 dark:bg-green-600" : ""
+        isScrolled ? "shadow-md bg-gray-300 dark:bg-slate-400" : ""
       }`}
     >
       <div className="container mx-auto p-2 md:px-8">
