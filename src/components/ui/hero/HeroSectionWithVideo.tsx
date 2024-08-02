@@ -99,7 +99,7 @@ const HeroSectionWithVideo = () => {
                 <motion.div className="flex-1 mt-10 xl:mt-0" whileHover={{ scale: 1.05 }}>
                     <div className="relative">
                         <motion.img 
-                            src="https://res.cloudinary.com/dj7nomqfd/image/upload/v1689756090/GG/production_ID_476_low_nfhbmh.jpg" 
+                            src="https://github.com/kazibyte/kazibyte.github.io/blob/main/public/android-chrome-384x384.png?raw=true" 
                             className="w-full rounded-lg shadow-lg"
                             initial={{ scale: 0.9 }}
                             animate={{ scale: 1 }}
@@ -170,9 +170,8 @@ const HeroSectionWithVideo = () => {
                         </button>
                         <div className="aspect-w-16 aspect-h-9">
                             <iframe 
-                                src="https://www.youtube.com/embed/ScMzIvxBSi4" 
+                                src="https://youtu.be/XnoI3IPOuK0?si=1mNDVUpXy3ndKr9f" 
                                 title="YouTube video player" 
-                                frameBorder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowFullScreen 
                                 className="w-full h-full"
@@ -185,4 +184,4 @@ const HeroSectionWithVideo = () => {
     )
 }
 
-export default HeroSectionWithVideo
+export default HeroSectionWithVideo;

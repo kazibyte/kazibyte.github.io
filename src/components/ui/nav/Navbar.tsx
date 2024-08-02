@@ -25,6 +25,7 @@ import {
   PhoneIcon,
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
 interface NavItem {
   label: string;
@@ -158,9 +159,12 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "shadow-md bg-white dark:bg-gray-800" : "bg-transparent"
+        isScrolled ? "shadow-md bg-gray-300 dark:bg-green-800" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto p-2 md:px-8">
@@ -181,7 +185,11 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:block">
             <div className="flex items-center space-x-4">
               {navItems.map((item, index) => (
-                <div key={index} className="relative group">
+                <motion.div
+                  key={index}
+                  className="relative group"
+                  whileHover={{ scale: 1.05 }}
+                >
                   <Link
                     href={item.href}
                     className="text-xl font-medium flex items-center hover:text-green-500"
@@ -190,7 +198,12 @@ const Navbar: React.FC = () => {
                     {item.label}
                   </Link>
                   {item.dropdownItems && (
-                    <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white dark:bg-gray-700">
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="absolute left-0 mt-2 w-48 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 bg-white dark:bg-gray-700"
+                    >
                       {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
                         <Link
                           key={dropdownIndex}
@@ -201,9 +214,9 @@ const Navbar: React.FC = () => {
                           {dropdownItem.label}
                         </Link>
                       ))}
-                    </div>
+                    </motion.div>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -243,7 +256,12 @@ const Navbar: React.FC = () => {
         </div>
       </div>
       {/* Mobile Menu */}
-      <div className={`lg:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
+      <motion.div
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: isMobileMenuOpen ? 1 : 0, height: isMobileMenuOpen ? "auto" : 0 }}
+        transition={{ duration: 0.3 }}
+        className={`lg:hidden overflow-hidden`}
+      >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-800">
           {navItems.map((item, index) => (
             <div key={index}>
@@ -257,36 +275,40 @@ const Navbar: React.FC = () => {
                 </Link>
                 {item.dropdownItems && (
                   <ChevronDownIcon
-                    className={`h-5 w-5 transition-transform duration-200 ${
-                      openDropdowns[item.label] ? "transform rotate-180" : ""
-                    }`}
-                  />
-                )}
-              </div>
-              {item.dropdownItems && (
-                <div
-                  className={`pl-4 ${
-                    openDropdowns[item.label] ? "block" : "hidden"
+                  className={`h-5 w-5 transition-transform duration-200 ${
+                    openDropdowns[item.label] ? "transform rotate-180" : ""
                   }`}
-                >
-                  {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
-                    <Link
-                      key={dropdownIndex}
-                      href={dropdownItem.href}
-                      className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-300 dark:hover:bg-green-700 flex items-center"
-                    >
-                      <dropdownItem.icon className="h-5 w-5 mr-2" />
-                      {dropdownItem.label}
-                    </Link>
-                  ))}
-                </div>
+                />
               )}
             </div>
-          ))}
-        </div>
+            {item.dropdownItems && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{
+                  opacity: openDropdowns[item.label] ? 1 : 0,
+                  height: openDropdowns[item.label] ? "auto" : 0,
+                }}
+                transition={{ duration: 0.3 }}
+                className={`pl-4 overflow-hidden`}
+              >
+                {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                  <Link
+                    key={dropdownIndex}
+                    href={dropdownItem.href}
+                    className="block px-3 py-2 rounded-md text-base font-medium hover:bg-green-300 dark:hover:bg-green-700 flex items-center"
+                  >
+                    <dropdownItem.icon className="h-5 w-5 mr-2" />
+                    {dropdownItem.label}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </div>
+        ))}
       </div>
-    </nav>
-  );
+    </motion.div>
+  </motion.nav>
+);
 };
 
 export default Navbar;
