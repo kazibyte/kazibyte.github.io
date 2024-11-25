@@ -9,7 +9,7 @@ const Home = () => {
     <div>
       
       <HeroSection />
-      <HeroSectionWithVideo />
+      {/* <HeroSectionWithVideo /> */}
       <ScrollToTop />
     </div>
   )
